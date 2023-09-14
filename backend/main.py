@@ -1,17 +1,20 @@
-from fastapi import FastAPI
+from flask import Flask
 
-from .models import User
-
-app = FastAPI()
+app = Flask(__name__)
 
 
-@app.post("/signup")
-async def signup(user: User):
-    # Code to handle user signup goes here
-    return {"message": "User signed up successfully"}
+@app.route("/signup", methods=["POST"])
+def signup():
+    @app.errorhandler(404)
+    def not_found(error):
+        return {"message": "Not Found"}, 404
+
+    @app.errorhandler(500)
+    def server_error(error):
+        return {"message": "Internal Server Error"}, 500
 
 
-@app.get("/kanban")
-async def get_kanban():
+@app.route("/kanban", methods=["GET"])
+def get_kanban():
     # Code to fetch and return the Kanban board goes here
-    return {"message": "Kanban board"}
+    return {"message": "Kanban board"}, 200
