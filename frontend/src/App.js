@@ -1,26 +1,34 @@
 import React from "react";
 import { Col, Container, Row } from "@mantine/core";
+import Signup from "./components/Signup";
+import KanbanBoard from "./components/KanbanBoard";
+import Tag from "./components/Tag";
+import Search from "./components/Search";
 
 // Placeholder components for SignupForm and KanbanBoard
-const SignupForm = () => {
-  return <div>{/* Signup form goes here */}</div>;
-};
-
-const KanbanBoard = () => {
-  return <div>{/* Kanban board goes here */}</div>;
-};
+// Removed placeholder components
 
 const App = () => {
   return (
     <Container>
       <Row>
         <Col>
-          <SignupForm />
+          <Signup />
         </Col>
       </Row>
       <Row>
         <Col>
           <KanbanBoard />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Tag />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Search />
         </Col>
       </Row>
     </Container>
