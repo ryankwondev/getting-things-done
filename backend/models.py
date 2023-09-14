@@ -24,3 +24,10 @@ class Task(SQLModel, table=True):
     description: str = Field(max_length=500)
     status: TaskStatus = Field(default=TaskStatus.DRAFT)
     user_id: int = Field(foreign_key="user.id")
+    kanban_id: int = Field(foreign_key="kanban.id")
+
+class Kanban(SQLModel, table=True):
+    id: int = Field(default=None, primary_key=True)
+    name: str = Field(max_length=100)
+    tasks: List[Task] = Field(default=[])
+    user_id: int = Field(foreign_key="user.id")
